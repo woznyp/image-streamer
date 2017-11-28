@@ -10,7 +10,8 @@ module.exports = {
     contentBase: './dist',
     hot: true,
     port: 9999,
-    publicPath: '/'
+    publicPath: '/',
+      host: '0.0.0.0'
   },
   entry: ['./frontend/core.js'],
   output: {
