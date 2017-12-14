@@ -1,9 +1,7 @@
 import elementsFactory from '../views/elements-factory';
-import {warn, info} from '../helpers/helpers';
 
 class DOMHandler {
   constructor() {
-    info('creating an object');
     this.elements = new Map();
   }
 
@@ -13,11 +11,10 @@ class DOMHandler {
    * @param {DOM Object} element
    */
   appendElement(target, element) {
-    target.appendChild(element);
+    target.html.appendChild(element.html);
   }
 
   addElement(elementName, element){
-    warn(element);
     this.elements.set(elementName, element);
   }
 
@@ -58,14 +55,11 @@ class DOMHandler {
       let elementsArray = Array.from(document.querySelectorAll(elementName));
 
       if(elementsArray){
-        info('adding elementsArray to Map');
         this.addElement(elementName, elementsArray.map((element) => {
           return this.createElement({type: element.tagName.toLowerCase(), reference: element})
         }));
       }
     }
-
-    info(this.elements);
 
     return this.elements.get(elementName);
   }

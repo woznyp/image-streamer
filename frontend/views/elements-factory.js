@@ -2,8 +2,9 @@ import {warn, group, groupEnd} from '../helpers/helpers';
 import element from './elements/Element';
 import video from './elements/Video';
 import canvas from './elements/Canvas';
+import span from './elements/Span';
 
-const ELEMENTS = {element,video,canvas};
+const ELEMENTS = {element,video,canvas, span};
 
 /**
  * Creates new object with given DOM element

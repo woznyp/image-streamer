@@ -2,7 +2,13 @@ import config from '../config/config';
 
 function loop(numberOfIterations, callback) {
   for (let i = 0; i < numberOfIterations; i++) {
-    callback();
+    callback(i);
+  }
+}
+
+function revloop(numberOfIterations, callback) {
+  for (let i = numberOfIterations - 1; i >= 0; i--) {
+    callback(i);
   }
 }
 
@@ -46,4 +52,4 @@ function groupEnd(arg){
   }
 }
 
-export {log, info, warn, error, group, groupEnd, loop}
+export {log, info, warn, error, group, groupEnd, loop, revloop}
