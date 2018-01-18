@@ -1,4 +1,4 @@
-import {warn, group, groupEnd} from '../helpers/helpers';
+import {warn, group, groupEnd} from '../helpers/console__helpers';
 import element from './elements/Element';
 import video from './elements/Video';
 import canvas from './elements/Canvas';
@@ -12,6 +12,10 @@ const ELEMENTS = {element,video,canvas, span};
  * @return {Object}
  */
 function create(descriptionObject){
+  if(typeof descriptionObject !== 'object'){
+    throw new Error('descriptionObject should be an object');
+  }
+
   if(ELEMENTS[descriptionObject.type]){
     return new ELEMENTS[descriptionObject.type](descriptionObject);
   } else {

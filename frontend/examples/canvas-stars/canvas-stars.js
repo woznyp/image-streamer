@@ -1,6 +1,7 @@
 import domHandler from "../../views/dom-handler";
 import "./canvas-stars.scss";
-import {info} from '../../helpers/helpers';
+import {info, loop} from '../../helpers/helpers';
+import Star from "./star";
 
 if (module.hot) {
   module.hot.accept('./canvas-stars.scss', () => {
@@ -16,6 +17,13 @@ const canvasStars = () => {
   canvasContext = canvas.getContext();
 
   body.append(canvas);
+
+  function generateStars(){
+    const stars = [];
+    loop(() => {
+      stars.push(new Star())
+    }, 10);
+  }
 
   function clear(){
     canvasContext.clearRect(0,0, areaWidth, areaHeight);
@@ -60,22 +68,9 @@ const canvasStars = () => {
     requestAnimationFrame(() => {drawPoint(x, it)});
   }
 
+  drawPoint(200,0);
+
   clear();
-  // setInterval(() => {
-  //   let x = (Math.round(Math.random() * 100) / 100) * areaWidth,
-  //   it = 0;
-  //   drawPoint(x, it)
-  // }, 1000);
-
-  function createFlake(){
-    let x = (Math.round(Math.random() * 100) / 100) * areaWidth,
-    it = 0;
-    drawPoint(x, it);
-    // setTimeout(createFlake, 300);
-    // 
-  }
-
-  createFlake();
 };
 
 export default canvasStars;
